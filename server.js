@@ -1,11 +1,17 @@
 const express = require('express');
+const mongoose = require("mongoose");
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-//This is an express route example
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
+// Routes
+require("./routes/apiRoutes")(app);
+//require("./routes/htmlRoutes")(app);
+
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+//MongoDB Require all models (For Quering)
+var db = require("./models");
+
