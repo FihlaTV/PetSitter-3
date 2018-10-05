@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Nav from './components/Nav';
 import Jumbotron from './components/Jumbotron';
+import Button from './components/Button';
+import { Col, Row, Container } from "./components/Grid";
 
 class App extends Component {
 
@@ -30,16 +32,20 @@ class App extends Component {
      
 
       <div className="App">
-
-      <Jumbotron>
-        <h1>This is Nat's Jumbotron</h1>
-      </Jumbotron>
+        <Nav />
+        <Container fluid>
+          <Row>
+            <Col size="md-12">
       
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.response}</p> */}
+              <Jumbotron>
+                <h1>{this.state.response}</h1>
+                <Button>
+                  Test Button
+                </Button>
+              </Jumbotron>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
