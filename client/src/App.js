@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavTabs from "./components/NavTabs";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-/* import Nav from './components/Nav';
-import Jumbotron from './components/Jumbotron';
+import SignIn from "./pages/SignIn/SignIn";
+import SignUp from "./pages/SignUp/SignUp";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Nav from './components/Nav';
+/* import Jumbotron from './components/Jumbotron';
 import Button from './components/Button';
 import { Col, Row, Container } from "./components/Grid"; */
 
@@ -35,9 +34,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavTabs />
-          <Route exact path="/" component={SignIn} />
-          <Route exact path="/signup" component={SignUp} />
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={SignIn} />
+            <Route exact path="/signup" component={SignUp} />
+          </Switch>
         </div>
       </Router>
      
