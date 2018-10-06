@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Search from "./pages/Search";
+import Favorites from "./pages/Favorites";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from './components/Nav';
 
@@ -26,7 +28,6 @@ class App extends Component {
     return body;
   };
 
-
   render() {
     return (
       <Router>
@@ -35,6 +36,8 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={SignIn} />
             <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/search" component={Search} />
+            <Route exact path="/favorites" component={Favorites} />
           </Switch>
           <h1>{this.state.response}</h1>
         </div>
