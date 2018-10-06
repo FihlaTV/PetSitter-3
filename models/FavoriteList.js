@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new NoteSchema object
 // This is similar to a Sequelize model
-var WishlistSchema = new Schema({
+var FavoritesListSchema = new Schema({
 
 //Column name for table
      petSitterName: String,
@@ -14,7 +14,7 @@ var WishlistSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Wishlist = mongoose.model("Wishlist", WishlistSchema);
+var FavoritesList = mongoose.model("Wishlist", FavoritesListSchema);
 
 // Export the Note model
-module.exports = Wishlist;
+module.exports = FavoritesList;
