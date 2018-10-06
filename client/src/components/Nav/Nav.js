@@ -12,7 +12,7 @@ const Nav = () => (
                     }
                 >
                     Sign-In
-            </Link>
+                </Link>
             </li>
             <li className="nav-item">
                 <Link
@@ -22,7 +22,27 @@ const Nav = () => (
                     }
                 >
                     Sign-Up
-            </Link>
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/search"
+                    className={
+                        window.location.pathname === "/search" ? "nav-link active" : "nav-link"
+                    }
+                >
+                    Search
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/favorites"
+                    className={
+                        window.location.pathname === "/favorites" ? "nav-link active" : "nav-link"
+                    }
+                >
+                    Favorites
+                </Link>
             </li>
         </ul>
     </nav>
