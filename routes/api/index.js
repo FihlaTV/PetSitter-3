@@ -5,7 +5,7 @@ const booksController = require("../../controllers/petSitterController");
 
 // Matches with "/api/hello"
 router.get("/hello", (req, res) => {
-  res.send({ express: "Hello From Express" });
+  res.send({ express: "Please Sign-in" });
 });
 
 module.exports = router;
