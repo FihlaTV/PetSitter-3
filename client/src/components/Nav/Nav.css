@@ -10,11 +10,38 @@
     
 }
 
-.active {
+.nav-link.active {
     color: #005592;
 }
 
 .navbar {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.navbar-text.abs {
+    color: #ffffff;
+    font-size: 45px;
+    font-family: 'Mali', cursive;
+    font-style: bold;
+}
+
+@media (min-width: 1000px) {
+    .navbar-text.abs {
+        
+        position: absolute;
+        width: 100%;
+        left: 0;
+        text-align: center;
+    }
+    
+}
+
+@media (max-width: 600px) {
+    .navbar-text.abs {
+        
+        padding-bottom: 30px;
+        text-align: center;
+    }
+    
 }

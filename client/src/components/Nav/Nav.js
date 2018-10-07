@@ -4,6 +4,7 @@ import "./Nav.css";
 
 const Nav = () => (
     <nav className="navbar navbar-expand-lg navbar-light" id="newcolor">
+        <span className="navbar-text abs">PetSitter</span>
         <ul className="nav nav-tabs">
             <li className="nav-item">
                 <Link

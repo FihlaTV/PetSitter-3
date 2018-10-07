@@ -1,0 +1,26 @@
+.search-form {
+    background: url("p1.png");
+    background-repeat: repeat;
+}
+
+#searchButton {
+    background: #ffb366;
+    color: #ffffff;
+    font-size: 27px;
+    font-style: bold;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.forminputz {
+    font-size: 27px;
+}
+
+#searchcitytitle {
+    font-family: 'Mali', cursive;
+    font-size: 36px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
