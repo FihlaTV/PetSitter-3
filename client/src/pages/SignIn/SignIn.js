@@ -25,7 +25,7 @@ class SignIn extends Component {
                         </Header>
                         <Form size='large'>
                             <Segment stacked>
-                                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' className="forminputz"/>
+                                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' className="forminputz"/>
                                 <Form.Input
                                 fluid
                                 icon='lock'
@@ -34,8 +34,8 @@ class SignIn extends Component {
                                 type='password'
                                 className="forminputz"
                                 />
-                                <Button fluid size='large' id="signinbutton">
-                                Login
+                                <Button fluid size='large' id="signInButton">
+                                Log-in
                                 </Button>
                             </Segment>
                         </Form>
