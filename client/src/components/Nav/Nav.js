@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Nav.css";
 
 const Nav = () => (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <nav className="navbar navbar-expand-lg navbar-light" id="newcolor">
         <ul className="nav nav-tabs">
             <li className="nav-item">
                 <Link

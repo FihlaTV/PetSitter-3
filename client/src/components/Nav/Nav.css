@@ -1,0 +1,20 @@
+#newcolor {
+    background: #ffb366;
+}
+
+.nav-link {
+    color: #ffffff;
+    font-size: 21px;
+    letter-spacing: 1px;
+    padding: 15px;
+    
+}
+
+.active {
+    color: #005592;
+}
+
+.navbar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

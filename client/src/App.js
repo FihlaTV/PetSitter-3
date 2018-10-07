@@ -39,7 +39,6 @@ class App extends Component {
             <Route exact path="/search" component={Search} />
             <Route exact path="/favorites" component={Favorites} />
           </Switch>
-          <h1>{this.state.response}</h1>
         </div>
       </Router>
     );
