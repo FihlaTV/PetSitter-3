@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import Button from "../../components/Button";
 import { Input } from "../../components/Form";
 import { Col, Row, Container } from "../../components/Grid";

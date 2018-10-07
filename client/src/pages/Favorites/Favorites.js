@@ -1,19 +1,30 @@
-import React from "react";
+import React, { Component } from "react";
+// import Button from "../../components/Button";
+import { Col, Row, Container } from "../../components/Grid";
+import { ProfilePhoto } from "../../components/Profile";
+import { Button, Icon } from 'semantic-ui-react'
 
-const Favorites = () => (
-    <div>
-        <h1>Favorites</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque velit, lobortis ut magna
-            varius, blandit rhoncus sem. Morbi lacinia nisi ac dui fermentum, sed luctus urna tincidunt.
-            Etiam ut feugiat ex. Cras non risus mi. Curabitur mattis rutrum ipsum, ut aliquet urna
-            imperdiet ac. Sed nec nulla aliquam, bibendum odio eget, vestibulum tortor. Cras rutrum ligula
-            in tincidunt commodo. Morbi sit amet mollis orci, in tristique ex. Donec nec ornare elit.
-            Donec blandit est sed risus feugiat porttitor. Vestibulum molestie hendrerit massa non
-            consequat. Vestibulum vitae lorem tortor. In elementum ultricies tempus. Interdum et malesuada
-            fames ac ante ipsum primis in faucibus.
-        </p>
-    </div> 
-);
+class Favorites extends Component {
+
+    render() {
+        return (
+
+            <Container fluid>
+                <Row>
+                    <Col size="sm-12 md-6">
+                        <h1>Favorites</h1>
+                        <ProfilePhoto />
+                        <Button animated>
+                            <Button.Content visible>Contact Pet Sitter</Button.Content>
+                            <Button.Content hidden>
+                                <Icon name='mail' />
+                            </Button.Content>
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
+        )
+    }
+}
 
 export default Favorites;
