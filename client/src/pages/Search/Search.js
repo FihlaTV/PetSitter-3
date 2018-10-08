@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Col, Row} from "../../components/Grid";
+import { Col, Row } from "../../components/Grid";
 import { Image, Form, Button, Grid } from "semantic-ui-react"
 import headerimage from "./headerimage.jpg";
 import "./Search.css";
@@ -9,13 +9,14 @@ class Search extends Component {
     render() {
         return (
             <div className="search-form">
-            <style>{`
+            <style>
+                {`
                     body > div,
                     body > div > div,
                     body > div > div > div.search-form {
                     height: 100%;}
                 `}
-                </style>
+            </style>
                 <Grid textAlign='center'  verticalAlign='middle'>
                     <Row>
                         <Image src={headerimage} style={{ height: '100%' }} className="headerimage" fluid />
