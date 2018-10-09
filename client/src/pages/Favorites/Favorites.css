@@ -22,3 +22,11 @@
     font-size: 18px;
     font-style: bold;
 }
+
+#favoriteCard {
+    background: #f4e8dc;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
