@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Button from "../../components/Button";
 import { Col, Row } from "../../components/Grid";
 import { ProfilePhoto } from "../../components/Profile";
-import { Image, Button, Grid, Container, Icon } from "semantic-ui-react"
+import { Image, Button, Grid, Container, Icon, Rating } from "semantic-ui-react"
 import headerimage from "../Search/headerimage.jpg";
 import "./Favorites.css"
 
@@ -20,6 +20,7 @@ class Favorites extends Component {
                     height: 100%;}
                 `}
                 </style>
+
                 <Grid>
                     <Row>
                         <Image src={headerimage} style={{ height: '100%' }} className="headerimage" fluid />
@@ -36,12 +37,14 @@ class Favorites extends Component {
                             </Col>
                             <Col size="sm-12 md-3">
                                 <h2>John Doe, 24</h2>
+                                <br />
+                                <Rating maxRating={5} defaultRating={3} icon='star' size='massive' />
                             </Col>
                             <Col size="sm-12 md-3">
                                 <h1>$29 per night</h1>
                             </Col>
                             <Col size="sm-12 md-3">
-                                <Button animated>
+                                <Button animated id="contactsitterButton">
                                     <Button.Content visible>Contact Pet Sitter</Button.Content>
                                     <Button.Content hidden>
                                         <Icon name='mail' />
@@ -51,6 +54,8 @@ class Favorites extends Component {
                         </Row>
                     </Container>
                 </Grid>
+
+
             </div>
         )
     }

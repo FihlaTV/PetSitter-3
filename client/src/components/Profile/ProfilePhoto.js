@@ -6,6 +6,6 @@ import "./ProfilePhoto.css";
 export const ProfilePhoto = () => (
 
     <div className="fakeprofile">
-        <Image src={fakeprofile} alt="profile pic" size="medium" circular />
+        <Image src={fakeprofile} alt="profile pic" size="medium" className="img-fluid hoverable" circular />
     </div>
 )
