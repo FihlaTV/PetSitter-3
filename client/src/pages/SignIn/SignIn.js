@@ -1,51 +1,52 @@
 import React, { Component } from "react";
-import Button from "../../components/Button";
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import PSlogo from "./logo_icon.png";
+import "./SignIn.css";
+/* import Button from "../../components/Button";
 import { Input } from "../../components/Form";
-import { Col, Row, Container } from "../../components/Grid"; 
+import { Col, Row, Container } from "../../components/Grid";  */
 
 class SignIn extends Component {
 
     render() {
         return (
-
-            <Container fluid>
-                <Row>
-                    <Col size="sm-12 md-6">
-                        <h1>Sign-In Page</h1>
-                        <Input
-                            name="full name"
-                            placeholder="Full Name"
-                        />
-                        <Input
-                            name="email"
-                            placeholder="Email"
-                        />
-                        <Input
-                            name="password"
-                            placeholder="Password"
-                        />
-                        <Button>
-                            Submit
-                        </Button>
-                    </Col>
-                </Row>
-            </Container>
+            <div className="login-form">
+                <style>{`
+                    body > div,
+                    body > div > div,
+                    body > div > div > div.login-form {
+                    height: 100%;}
+                `}
+                </style>
+                <Grid textAlign='center' style={{ height: '100%'}} verticalAlign='middle'>
+                    <Grid.Column style={{ maxWidth: 450 }}>
+                        <Header as='h1' textAlign='center' id="headertitle">
+                            <Image src={PSlogo} /> Log-in to your account
+                        </Header>
+                        <Form size='large'>
+                            <Segment stacked>
+                                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' className="forminputz"/>
+                                <Form.Input
+                                fluid
+                                icon='lock'
+                                iconPosition='left'
+                                placeholder='Password'
+                                type='password'
+                                className="forminputz"
+                                />
+                                <Button fluid size='large' id="signInButton">
+                                Log-in
+                                </Button>
+                            </Segment>
+                        </Form>
+                        <Message id="datMessage">
+                            New to us? <a href="/signup">Sign Up!</a>
+                        </Message>
+                    </Grid.Column>
+                </Grid>
+            </div>
         )
     }
 }
-
-/* const SignIn = () => (
-    <div>
-        <h1>Sign In Page</h1>
-        <p>
-            Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui mauris,
-            ut interdum nunc egestas sed. Aenean sed mollis diam. Nunc aliquet risus ac finibus porta. Nam
-            quis arcu non lectus tincidunt fermentum. Suspendisse aliquet orci porta quam semper
-            imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus in. Sed rhoncus mollis
-            diam, sit amet facilisis lectus blandit at.
-        </p>
-        <Button>Testing</Button>
-    </div>
-); */
 
 export default SignIn;
