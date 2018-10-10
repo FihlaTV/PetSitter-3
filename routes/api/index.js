@@ -1,11 +1,14 @@
 const router = require("express").Router();
-const booksController = require("../../controllers/petSitterController");
+const petSitterRoutes = require("./petSitter");
+const memberRoutes = require("./member");
 
-//This page calls the controllers
 
-// Matches with "/api/hello"
-router.get("/hello", (req, res) => {
-  res.send({ express: "Hello from Express" });
-});
+// Pet Sitter routes
+router.use("/petSitter", petSitterRoutes);
+
+// Member routes
+router.use("/member", memberRoutes);
+
+
 
 module.exports = router;

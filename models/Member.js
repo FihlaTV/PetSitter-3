@@ -7,14 +7,27 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 var MemberSchema = new Schema({
 
-//Column name for table
-    name: String,
-    email: String,
-    password: String
-});
+    name: {
+      type: String,
+      unique: true
+    },
+  
+    email: {
+      type: String,
+      unique: true
+    },
+  
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "PetSitter"
+      }
+    ]
+  });
 
 // This creates our model from the above schema, using mongoose's model method
 var Member = mongoose.model("Member", MemberSchema);
 
+mongoose.set("useCreateIndex", true)
 // Export the Note model
 module.exports = Member;

@@ -24,5 +24,7 @@ var PetSitterSchema = new Schema({
 // This creates our model from the above schema, using mongoose's model method
 var PetSitter = mongoose.model("PetSitter", PetSitterSchema);
 
+mongoose.set("useCreateIndex", true)
+
 // Export the Note model
 module.exports = PetSitter;
