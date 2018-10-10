@@ -2,11 +2,31 @@ import React, { Component } from "react";
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import PSlogo from "./logo_icon.png";
 import "./SignIn.css";
+import { Redirect } from "react-router-dom";
 /* import Button from "../../components/Button";
 import { Input } from "../../components/Form";
 import { Col, Row, Container } from "../../components/Grid";  */
 
 class SignIn extends Component {
+
+    state = {
+        name: "",
+        email: "",
+        password: "",
+        redirect: false
+    };
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    };
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='/search' />
+        }
+    }
 
     render() {
         return (
@@ -34,9 +54,12 @@ class SignIn extends Component {
                                 type='password'
                                 className="forminputz"
                                 />
-                                <Button fluid size='large' id="signInButton">
-                                Log-in
+                                <div>
+                                    {this.renderRedirect()}
+                                    <Button fluid size='large' id="signInButton" onClick={this.setRedirect}>
+                                    Log-in
                                 </Button>
+                                </div>
                             </Segment>
                         </Form>
                         <Message id="datMessage">

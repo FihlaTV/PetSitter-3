@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import { Modal, ModalBody, ModalHeader, ModalFooter } from "mdbreact";
 import PSlogo from "./logo_icon.png";
 import "./SignUp.css";
 /* import Button from "../../components/Button";
@@ -7,6 +8,19 @@ import { Input } from "../../components/Form";
 import { Col, Row, Container } from "../../components/Grid"; */
 
 class SignUp extends Component {
+
+    state = {
+        name: "",
+        email: "",
+        password: "",
+        modal: false
+    };
+
+    toggle = () => {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
 
     render() {
         return (
@@ -35,9 +49,17 @@ class SignUp extends Component {
                                 type='password'
                                 className="forminputz"
                                 />
-                                <Button fluid size='large' id="signUpButton">
-                                Sign-up
-                                </Button>
+                                <Button fluid size='large' id="signUpButton" onClick={this.toggle}>Sign-up</Button>
+                                <Modal isOpen={this.state.modal} toggle={this.toggle} className="modal-notify modal-info text-white">
+                                    <ModalHeader toggle={this.toggle} id="modalheader">Thank you for signing up!</ModalHeader>
+                                    <ModalBody>
+                                        
+                                        <h1>You can now sign-in <a href="/">here</a>.</h1>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button id="modalButton" onClick={this.toggle}>Close</Button>{' '}
+                                    </ModalFooter>
+                                </Modal>
                             </Segment>
                         </Form>
                         <Message id="datMessage">
@@ -45,6 +67,9 @@ class SignUp extends Component {
                         </Message>
                     </Grid.Column>
                 </Grid>
+  
+                    {/* <Button onClick={this.toggle}>Modal</Button> */}
+                    
             </div>
         )
     }
