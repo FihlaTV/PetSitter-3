@@ -1,21 +1,21 @@
 //MongoDB Require all models (For Quering)
-const db = require("../models");
+// const db = require("../models");
 
-// Defining methods for the petSitterController
-module.exports = {
-    findAllPetSitters: function(req, res) {
-        db.PetSitter
-        .find(req.query)
-        .then(dbModel => res.json(dbModel))
-        .catch(err=> res.status(422).json(err));
-    },
+// // Defining methods for the petSitterController
+// module.exports = {
+//     findAll: function(req, res) {
+//         db.PetSitter
+//         .find(req.query)
+//         .then(dbModel => res.json(dbModel))
+//         .catch(err=> res.status(422).json(err));
+//     },
 
-    retrieveMemberWishList: function(req, res) {
-         db.FavoriteList
-        .findById(req.params.id)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    }
+//     retrieveMemberWishList: function(req, res) {
+//          db.FavoriteList
+//         .findById(req.params.id)
+//         .then(dbModel => res.json(dbModel))
+//         .catch(err => res.status(422).json(err));
+//     }
 
 
     // findAll: function(req, res) {
@@ -50,4 +50,4 @@ module.exports = {
     //     .then(dbModel => res.json(dbModel))
     //     .catch(err => res.status(422).json(err));
     // }
-  };
+//   };
