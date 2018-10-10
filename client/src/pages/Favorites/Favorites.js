@@ -62,9 +62,6 @@ class Favorites extends Component {
                                 </Card>
                             </Col>
                         </Row>
-                        <Row>
-                            <br /> <br /> <br /> <br />
-                        </Row>
                     </Container>
                 </Grid>
             </div>
