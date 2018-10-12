@@ -18,9 +18,10 @@ body {
 }
 
 #contactsitterButton {
-    padding: 24px;
+    padding: 20px;
     font-size: 18px;
     font-style: bold;
+    margin: 0 auto;
 }
 
 #favoriteCard {

@@ -40,17 +40,16 @@ class Favorites extends Component {
                                             <Col size="sm-12 md-3">
                                                 <ProfilePhoto />
                                             </Col>
-                                            <Col size="sm-12 md-3">
+                                            <Col size="sm-12 md-3" style={{ textAlign:"center" }}>
                                                 <h2>John Doe, 24</h2>
                                                 <br />
-                                                <Rating maxRating={5} defaultRating={3} icon='star' size='massive' />
-                                            </Col>
-                                            <Col size="sm-12 md-3" className="align-middle">
-                                                <h1>$29</h1><br/>
-                                                <h3>per night</h3>
+                                                <Rating maxRating={5} defaultRating={4} icon='star' size='massive' disabled/>
                                             </Col>
                                             <Col size="sm-12 md-3">
-                                                <Button animated id="contactsitterButton">
+                                                <h2>$29/night</h2>
+                                            </Col>
+                                            <Col size="sm-12 md-3">
+                                                <Button animated id="contactsitterButton" className="mx-auto d-block">
                                                     <Button.Content visible>Contact Pet Sitter</Button.Content>
                                                     <Button.Content hidden>
                                                         <Icon name='mail' />
