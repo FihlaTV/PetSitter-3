@@ -17,8 +17,21 @@ router.route("/save")
 router.route("/all")
   .get(function (req, res){
     db.PetSitter.find().then(function(petSitter){
-      // console.log(petsitter);
       res.json({petSitter:petSitter})
+    })
+  })
+
+router.route("/:id")
+  .get(function(req, res){
+    db.PetSitter.find({_id:req.params.id}).then(function(sitterProfile){
+      res.json({sitterProfile:sitterProfile})
+    })
+  })
+
+router.route("/search/:city")
+  .get(function (req, res){
+    db.PetSitter.find({city: req.params.city}).then(function(serchedSitters){
+      res.json({serchedSitters:serchedSitters})
     })
   })
 

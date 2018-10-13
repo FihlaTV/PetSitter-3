@@ -35,6 +35,12 @@ router.route("/:id")
                 })
         })
     })
+    router.route("/memberFavorites/:id")
+        .get(function (req, res){
+            db.Member.findOne({_id:req.params.id}).then(function(memberFavorites){
+                res.json(memberFavorites.favorites)
+            })
+        })
 
 
   module.exports = router;
