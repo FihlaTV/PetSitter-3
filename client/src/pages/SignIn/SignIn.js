@@ -22,6 +22,41 @@ class SignIn extends Component {
         })
     };
 
+    submit = () => {
+        this.callApi()
+      .catch(err => console.log(err));
+      console.log(this.state.response);
+    }
+
+    callApi = async () => {
+        await fetch('/api/member/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            "email" : document.getElementById('email').value,
+            "password" : document.getElementById('password').value
+            })
+        }).then(response => {
+            if (response.ok) {
+              response.json().then(json => {     
+                this.setRedirect();
+                return json;
+              });
+            } 
+            
+            else if (response.status !== 200) {
+                response.json().then(json => {
+                    this.setState({response: JSON.stringify(json)});
+                    console.log(json);
+                });
+                console.log(response);
+                throw Error(response.message);
+            }
+          });  
+      };
+
     renderRedirect = () => {
         if (this.state.redirect) {
             return <Redirect to='/search' />
@@ -45,7 +80,7 @@ class SignIn extends Component {
                         </Header>
                         <Form size='large'>
                             <Segment stacked>
-                                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' className="forminputz"/>
+                                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' className="forminputz" id="email"/>
                                 <Form.Input
                                 fluid
                                 icon='lock'
@@ -53,10 +88,11 @@ class SignIn extends Component {
                                 placeholder='Password'
                                 type='password'
                                 className="forminputz"
+                                id="password"
                                 />
                                 <div>
                                     {this.renderRedirect()}
-                                    <Button fluid size='large' id="signInButton" onClick={this.setRedirect}>
+                                    <Button fluid size='large' id="signInButton" onClick={this.submit}>
                                     Log-in
                                 </Button>
                                 </div>
