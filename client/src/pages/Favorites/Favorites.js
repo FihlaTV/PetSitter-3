@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-// import Button from "../../components/Button";
 import { Col, Row } from "../../components/Grid";
 import { ProfilePhoto } from "../../components/Profile";
-import { Image, Button, Grid, Container, Icon, Rating } from "semantic-ui-react"
+import { Button, Grid, Icon, Rating } from "semantic-ui-react"
+import { Carousel, CarouselInner, CarouselItem, View, Mask, Container } from 'mdbreact';
 import { Card, CardBody } from 'mdbreact';
-import headerimage from "../Search/headerimage.jpg";
+import carousel01 from "../../components/Header/carousel01.jpg";
+import carousel02 from "../../components/Header/carousel02.jpg";
+import carousel03 from "../../components/Header/carousel03.jpg";
 import "./Favorites.css"
 
 class Favorites extends Component {
@@ -22,9 +24,37 @@ class Favorites extends Component {
                 `}
                 </style>
 
-                <Grid>
+                <Grid textAlign='center' verticalAlign='middle'>
                     <Row>
-                        <Image src={headerimage} style={{ height: '100%' }} className="headerimage" fluid />
+                        <Col size="sm-12 md-12">
+                            <Carousel
+                                activeItem={1}
+                                length={3}
+                                showControls={true}
+                                showIndicators={false}
+                                className="z-depth-1">
+                                <CarouselInner>
+                                    <CarouselItem itemId="1">
+                                        <View>
+                                            <img className="d-block w-100 img-fluid" src={carousel01} alt="First slide" />
+                                            <Mask overlay="black-slight"></Mask>
+                                        </View>
+                                    </CarouselItem>
+                                    <CarouselItem itemId="2">
+                                        <View>
+                                            <img className="d-block w-100" src={carousel02} alt="Second slide" />
+                                            <Mask overlay="black-slight"></Mask>
+                                        </View>
+                                    </CarouselItem>
+                                    <CarouselItem itemId="3">
+                                        <View>
+                                            <img className="d-block w-100" src={carousel03} alt="Third slide" />
+                                            <Mask overlay="black-slight"></Mask>
+                                        </View>
+                                    </CarouselItem>
+                                </CarouselInner>
+                            </Carousel>
+                        </Col>
                     </Row>
                     <Row>
                         <Col size="sm-12 md-12">
@@ -40,10 +70,10 @@ class Favorites extends Component {
                                             <Col size="sm-12 md-3">
                                                 <ProfilePhoto />
                                             </Col>
-                                            <Col size="sm-12 md-3" style={{ textAlign:"center" }}>
+                                            <Col size="sm-12 md-3" style={{ textAlign: "center" }}>
                                                 <h2>John Doe, 24</h2>
                                                 <br />
-                                                <Rating maxRating={5} defaultRating={4} icon='star' size='massive' disabled/>
+                                                <Rating maxRating={5} defaultRating={4} icon='star' size='massive' disabled />
                                             </Col>
                                             <Col size="sm-12 md-3">
                                                 <h2>$29/night</h2>
