@@ -13,14 +13,54 @@ class SignUp extends Component {
         name: "",
         email: "",
         password: "",
+        response: "",
         modal: false
     };
 
-    toggle = () => {
+    toggleModal = () => {
         this.setState({
             modal: !this.state.modal
         });
     }
+
+    submit = () => {
+        this.callApi()
+      .catch(err => console.log(err));
+      this.toggleModal();
+      console.log(this.state.response);
+    }
+
+
+    callApi = async () => {
+        await fetch('/api/member/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            "name" : document.getElementById('name').value,
+            "email" : document.getElementById('email').value,
+            "password" : document.getElementById('password').value
+            })
+        }).then(response => {
+            if (response.ok) {
+              response.json().then(json => {
+                  
+                  this.setState({response: JSON.stringify(json.name)});
+                return json;
+              });
+            } 
+            
+            else if (response.status !== 200) {
+                response.json().then(json => {
+                    this.setState({response: JSON.stringify(json)});
+                    console.log(json);
+                });
+                console.log(response);
+                throw Error(response.message);
+            }
+          });  
+      };
 
     render() {
         return (
@@ -39,8 +79,8 @@ class SignUp extends Component {
                         </Header>
                         <Form size='large'>
                             <Segment stacked>
-                                <Form.Input fluid icon='user' iconPosition='left' placeholder='Full Name' className="forminputz"/> 
-                                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' className="forminputz"/>
+                                <Form.Input fluid icon='user' iconPosition='left' placeholder='Full Name' className="forminputz" id="name"/> 
+                                <Form.Input fluid icon='mail' iconPosition='left' placeholder='E-mail address' className="forminputz" id="email"/>
                                 <Form.Input
                                 fluid
                                 icon='lock'
@@ -48,16 +88,16 @@ class SignUp extends Component {
                                 placeholder='Password'
                                 type='password'
                                 className="forminputz"
+                                id="password"
                                 />
-                                <Button fluid size='large' id="signUpButton" onClick={this.toggle}>Sign-up</Button>
+                                <Button fluid size='large' id="signUpButton" onClick={this.submit}>Sign-up</Button>
                                 <Modal isOpen={this.state.modal} toggle={this.toggle} className="modal-notify modal-info text-white">
                                     <ModalHeader toggle={this.toggle} id="modalheader">Thank you for signing up!</ModalHeader>
                                     <ModalBody>
-                                        
-                                        <h1>You can now sign-in <a href="/">here</a>.</h1>
+                                        <h1> Hi {this.state.response}! You can now sign-in <a href="/">here</a>.</h1>
                                     </ModalBody>
                                     <ModalFooter>
-                                        <Button id="modalButton" onClick={this.toggle}>Close</Button>{' '}
+                                        <Button id="modalButton" onClick={this.toggleModal}>Close</Button>{' '}
                                     </ModalFooter>
                                 </Modal>
                             </Segment>
