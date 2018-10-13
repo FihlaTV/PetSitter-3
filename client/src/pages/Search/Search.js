@@ -6,9 +6,30 @@ import { Form, Button, Grid } from "semantic-ui-react";
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
+import carousel04 from "../../components/Header/carousel04.jpg";
 import "./Search.css";
 
 class Search extends Component {
+
+    state = {
+        name: "",
+        age: "",
+        rating: ""
+
+      };
+    
+    componentDidMount() {
+        this.loadSitters();
+    }
+
+    loadSitters = async () => {
+        const response = await fetch('/api/hello');
+        const body = await response.json();
+        console.log(body);
+        if (response.status !== 200) throw Error(body.message);
+    
+        return body;
+    };
 
     render() {
         return (
@@ -26,7 +47,7 @@ class Search extends Component {
                         <Col size="sm-12 md-12">
                             <Carousel
                                 activeItem={1}
-                                length={3}
+                                length={4}
                                 showControls={true}
                                 showIndicators={false}
                                 className="z-depth-1">
@@ -46,6 +67,12 @@ class Search extends Component {
                                     <CarouselItem itemId="3">
                                         <View>
                                             <img className="d-block w-100" src={carousel03} alt="Third slide" />
+                                            <Mask overlay="black-slight"></Mask>
+                                        </View>
+                                    </CarouselItem>
+                                    <CarouselItem itemId="4">
+                                        <View>
+                                            <img className="d-block w-100" src={carousel04} alt="Fourth slide" />
                                             <Mask overlay="black-slight"></Mask>
                                         </View>
                                     </CarouselItem>
