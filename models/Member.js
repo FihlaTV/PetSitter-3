@@ -67,9 +67,6 @@ MemberSchema.methods.comparePassword = function(candidatePassword) {
 // This creates our model from the above schema, using mongoose's model method
 var Member = mongoose.model("Member", MemberSchema);
 
-//mongoose.set("useCreateIndex", true)
-
-
 
 // Export the Note model
 module.exports = Member;

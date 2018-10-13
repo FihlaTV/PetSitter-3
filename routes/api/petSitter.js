@@ -13,10 +13,8 @@ router.route("/save")
 router.route("/all")
   .get(function (req, res){
     db.PetSitter.find().then(function(petSitter){
-      // console.log(petsitter);
       res.json({petSitter:petSitter})
     })
   })
-
 
 module.exports = router;

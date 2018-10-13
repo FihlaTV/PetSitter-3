@@ -11,11 +11,11 @@ var PetSitterSchema = new Schema({
    profilePhoto: String,
    age: Number,
    rating: Number,
+   city: String,
    price: Number,
    summary: String,
    phone: String,
    email: String,
-   phone: String,
    yearsOfExperience: String,
    typesOfAnimals: String,
    availability: String
