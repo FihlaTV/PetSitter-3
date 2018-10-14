@@ -15,21 +15,20 @@ class Search extends Component {
         name: "",
         age: "",
         rating: ""
-
-      };
+    };
     
-    componentDidMount() {
-        this.loadSitters();
+/*     componentDidMount() {
+        this.loadSearchPage();
     }
 
-    loadSitters = async () => {
-        const response = await fetch('/api/hello');
+    loadSearchPage = async () => {
+        const response = await fetch('/api/petSitter/all');
         const body = await response.json();
         console.log(body);
         if (response.status !== 200) throw Error(body.message);
     
         return body;
-    };
+    }; */
 
     render() {
         return (

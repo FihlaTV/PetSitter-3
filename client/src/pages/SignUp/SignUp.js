@@ -25,9 +25,9 @@ class SignUp extends Component {
 
     submit = () => {
         this.callApi()
-      .catch(err => console.log(err));
-      this.toggleModal();
-      console.log(this.state.response);
+        .catch(err => console.log(err));
+        this.toggleModal();
+        console.log(this.state.response);
     }
 
 
@@ -38,9 +38,9 @@ class SignUp extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-            "name" : document.getElementById('name').value,
-            "email" : document.getElementById('email').value,
-            "password" : document.getElementById('password').value
+            "name" : document.getElementById("name").value,
+            "email" : document.getElementById("email").value,
+            "password" : document.getElementById("password").value
             })
         }).then(response => {
             if (response.ok) {
