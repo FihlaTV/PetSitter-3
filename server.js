@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const scripts = require('./scripts/seedDB.js');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -19,6 +20,9 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/petsitter", { useNewUrlParser: true });
+
+//Populate database with seed file
+scripts();
 
 //Start the API Server
 app.listen(port, () => console.log(`Listening on port ${port}`));
