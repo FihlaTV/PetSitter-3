@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
-// import FooterPage from "../../components/Footer";
+import Sitter from "../../components/Sitter";
 import { Carousel, CarouselInner, CarouselItem, View, Mask } from 'mdbreact';
 import { Form, Button, Grid } from "semantic-ui-react";
 import carousel01 from "../../components/Header/carousel01.jpg";
@@ -14,14 +14,25 @@ class Search extends Component {
     state = {
         name: "",
         age: "",
-        rating: ""
+        rating: "",
+        response: "",
+        city: "",
+        displaySitters: false
     };
-    
-/*     componentDidMount() {
-        this.loadSearchPage();
+
+    displaySitter = () => {
+        this.setState({
+            displaySitters: !this.state.displaySitters
+        })
     }
 
-    loadSearchPage = async () => {
+    /* submit = () => {
+        this.callApi()
+        .catch(err => console.log(err));
+        console.log(this.state.response);
+    }
+
+    callApi = async () => {
         const response = await fetch('/api/petSitter/all');
         const body = await response.json();
         console.log(body);
@@ -31,6 +42,22 @@ class Search extends Component {
     }; */
 
     render() {
+        let theSitters = null;
+
+        if ( this.state.city === this.state.displaySitters.city ) {
+            theSitters = (
+            <div>
+                 { this.state.theSitters.map((theSitter) => {
+                      return <Sitter
+                                name={theSitter.name}
+                                age={theSitter.age}
+                                rating={theSitter.rating}
+                                key={theSitter.id} />
+                 })}
+            </div>
+            )
+       }
+
         return (
             <div className="search-form">
                 <style>
@@ -93,15 +120,16 @@ class Search extends Component {
                                     type='search'
                                     className="forminputz"
                                 />
-                                <Button fluid size='large' id="searchButton">
+                                <Button fluid size='large' id="searchButton" onClick={this.displaySitter}>
                                     Search
                             </Button>
                             </Form>
                         </Col>
                     </Row>
-                </Grid>
-                {/* <FooterPage /> */}
+                </Grid>   
             </div>
+
+            
         )
     }
 }
