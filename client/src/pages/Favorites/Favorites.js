@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
 import { ProfilePhoto } from "../../components/Profile";
 import { Button, Grid, Icon, Rating } from "semantic-ui-react"
-import { Carousel, CarouselInner, CarouselItem, View, Mask, Container } from 'mdbreact';
+import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask, Container } from 'mdbreact';
 import { Card, CardBody } from 'mdbreact';
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
@@ -39,25 +39,34 @@ class Favorites extends Component {
                                             <img className="d-block w-100 img-fluid" src={carousel01} alt="First slide" />
                                             <Mask overlay="black-slight"></Mask>
                                         </View>
+                                        <CarouselCaption>
+                                            <h3 id="h3-responsive">PetSitter</h3>
+                                        </CarouselCaption>
                                     </CarouselItem>
                                     <CarouselItem itemId="2">
                                         <View>
                                             <img className="d-block w-100" src={carousel02} alt="Second slide" />
                                             <Mask overlay="black-slight"></Mask>
                                         </View>
+                                        <CarouselCaption>
+                                            <h3 id="h3-responsive">PetSitter</h3>
+                                        </CarouselCaption>
                                     </CarouselItem>
                                     <CarouselItem itemId="3">
                                         <View>
                                             <img className="d-block w-100" src={carousel03} alt="Third slide" />
                                             <Mask overlay="black-slight"></Mask>
                                         </View>
+                                        <CarouselCaption>
+                                            <h3 id="h3-responsive">PetSitter</h3>
+                                        </CarouselCaption>
                                     </CarouselItem>
                                 </CarouselInner>
                             </Carousel>
                         </Col>
                     </Row>
                     <Row>
-                        <Col size="sm-12 md-12">
+                        <Col size="sm-10 md-12">
                             <h1 id="favoritestitle">Favorites</h1>
                         </Col>
                     </Row>
@@ -65,7 +74,7 @@ class Favorites extends Component {
                         <Row>
                             <Col size="sm-12 md-12">
                                 <Card className="w-100 z-depth-5" id="favoriteCard">
-                                    <CardBody>
+                                    <CardBody id="cardBody">
                                         <Row>
                                             <Col size="sm-12 md-3">
                                                 <ProfilePhoto />
