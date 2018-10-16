@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
-// import FooterPage from "../../components/Footer";
-import { Carousel, CarouselInner, CarouselItem, View, Mask } from 'mdbreact';
+import Sitter from "../../components/Sitter";
+import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask } from 'mdbreact';
 import { Form, Button, Grid } from "semantic-ui-react";
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
-import carousel04 from "../../components/Header/carousel04.jpg";
 import "./Search.css";
 
 class Search extends Component {
@@ -14,24 +13,50 @@ class Search extends Component {
     state = {
         name: "",
         age: "",
-        rating: ""
+        rating: "",
+        response: "",
+        city: "",
+        displaySitters: false
+    };
 
-      };
-    
-    componentDidMount() {
-        this.loadSitters();
+    displaySitter = () => {
+        this.setState({
+            displaySitters: !this.state.displaySitters
+        })
     }
 
-    loadSitters = async () => {
-        const response = await fetch('/api/hello');
+    /* submit = () => {
+        this.callApi()
+        .catch(err => console.log(err));
+        console.log(this.state.response);
+    }
+
+    callApi = async () => {
+        const response = await fetch('/api/petSitter/all');
         const body = await response.json();
         console.log(body);
         if (response.status !== 200) throw Error(body.message);
     
         return body;
-    };
+    }; */
 
     render() {
+        let theSitters = null;
+
+        if ( this.state.city === this.state.displaySitters.city ) {
+            theSitters = (
+            <div>
+                 { this.state.theSitters.map((theSitter) => {
+                      return <Sitter
+                                name={theSitter.name}
+                                age={theSitter.age}
+                                rating={theSitter.rating}
+                                key={theSitter.id} />
+                 })}
+            </div>
+            )
+       }
+
         return (
             <div className="search-form">
                 <style>
@@ -47,7 +72,7 @@ class Search extends Component {
                         <Col size="sm-12 md-12">
                             <Carousel
                                 activeItem={1}
-                                length={4}
+                                length={3}
                                 showControls={true}
                                 showIndicators={false}
                                 className="z-depth-1">
@@ -57,24 +82,27 @@ class Search extends Component {
                                             <img className="d-block w-100 img-fluid" src={carousel01} alt="First slide" />
                                             <Mask overlay="black-slight"></Mask>
                                         </View>
+                                        <CarouselCaption>
+                                            <h3 id="h3-responsive">PetSitter</h3>
+                                        </CarouselCaption>
                                     </CarouselItem>
                                     <CarouselItem itemId="2">
                                         <View>
                                             <img className="d-block w-100" src={carousel02} alt="Second slide" />
                                             <Mask overlay="black-slight"></Mask>
                                         </View>
+                                        <CarouselCaption>
+                                            <h3 id="h3-responsive">PetSitter</h3>
+                                        </CarouselCaption>
                                     </CarouselItem>
                                     <CarouselItem itemId="3">
                                         <View>
                                             <img className="d-block w-100" src={carousel03} alt="Third slide" />
                                             <Mask overlay="black-slight"></Mask>
                                         </View>
-                                    </CarouselItem>
-                                    <CarouselItem itemId="4">
-                                        <View>
-                                            <img className="d-block w-100" src={carousel04} alt="Fourth slide" />
-                                            <Mask overlay="black-slight"></Mask>
-                                        </View>
+                                        <CarouselCaption>
+                                            <h3 id="h3-responsive">PetSitter</h3>
+                                        </CarouselCaption>
                                     </CarouselItem>
                                 </CarouselInner>
                             </Carousel>
@@ -82,7 +110,7 @@ class Search extends Component {
                     </Row>
 
                     <Row>
-                        <Col size="sm-12 md-6">
+                        <Col size="sm-10 md-6">
                             <h1 id="searchcitytitle">Search by City</h1>
                             <Form size='large'>
 
@@ -94,15 +122,16 @@ class Search extends Component {
                                     type='search'
                                     className="forminputz"
                                 />
-                                <Button fluid size='large' id="searchButton">
+                                <Button fluid size='large' id="searchButton" onClick={this.displaySitter}>
                                     Search
                             </Button>
                             </Form>
                         </Col>
                     </Row>
-                </Grid>
-                {/* <FooterPage /> */}
+                </Grid>   
             </div>
+
+            
         )
     }
 }

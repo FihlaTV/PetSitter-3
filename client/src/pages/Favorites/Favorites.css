@@ -5,12 +5,13 @@ body {
 
 #favoritestitle {
     font-family: 'Mali', cursive;
-    font-size: 56px;
+    font-size: 65px;
     letter-spacing: 1px;
     font-style: bold;
     margin-top: 70px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     text-align: center;
+    text-shadow: 3px 3px 9px #cc8f51;
 }
 
 .headerimage {
@@ -32,4 +33,22 @@ body {
 
 h1, h2, h3 {
     text-align: center;
+    font-family: 'Mali', cursive;
+    padding: 20px;
+}
+
+#h3-responsive {
+    font-family: 'Palanquin Dark', sans-serif;
+    font-size: 80px;
+    opacity: 0.85;
+    color: #f4e8dc;
+    font-style: italic;
+    text-shadow: 3px 3px 9px #000000;
+    float: right;
+    margin-right: -80px;
+    margin-bottom: -25px;
+}
+
+#cardBody {
+    padding: 50px;
 }
