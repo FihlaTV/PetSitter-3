@@ -6,7 +6,7 @@ module.exports = {
     const petSitterSeed = [
       {
        name: "Lawrence A Porter",
-       profilePhoto: "/images/PetSitter1.jpg",
+       profilePhoto: "/images/PetSitter01.jpeg",
        age: 18,
        rating: 3,
        city: "Miami",
@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         name: "John J Valentine",
-        profilePhoto: "/images/PetSitter2.jpg",
+        profilePhoto: "/images/PetSitter02.jpeg",
         age: 25,
         rating: 2,
         city: "Miami",
@@ -34,7 +34,7 @@ module.exports = {
        },
        {
         name: "Charles D Schmidt",
-        profilePhoto: "/images/PetSitter3.jpg",
+        profilePhoto: "/images/PetSitter03.jpeg",
         age: 36,
         rating: 1,
         city: "Miami",
@@ -48,7 +48,7 @@ module.exports = {
        },
        {
         name: "Mollie J Osborn",
-        profilePhoto: "/images/PetSitter4.jpg",
+        profilePhoto: "/images/PetSitter04.jpeg",
         age: 26,
         rating: 4,
         city: "Santa Clara",
@@ -62,7 +62,7 @@ module.exports = {
        },
        {
         name: "Annette D Hollister",
-        profilePhoto: "/images/PetSitter5.jpg",
+        profilePhoto: "/images/PetSitter05.jpeg",
         age: 36,
         rating: 4,
         city: "Santa Clara",
@@ -76,7 +76,7 @@ module.exports = {
        },
        {
         name: "Elizabeth R Fleetwood",
-        profilePhoto: "/images/PetSitter6.jpg",
+        profilePhoto: "/images/PetSitter06.jpeg",
         age: 46,
         rating: 5,
         city: "South Dekota",
@@ -90,7 +90,7 @@ module.exports = {
        },
        {
         name: "Robin J Denny",
-        profilePhoto: "/images/PetSitter7.jpg",
+        profilePhoto: "/images/PetSitter07.jpeg",
         age: 45,
         rating: 3,
         city: "Wallingford",
@@ -104,7 +104,7 @@ module.exports = {
        },
        {
         name: "Patricia S Boyd",
-        profilePhoto: "/images/PetSitter8.jpg",
+        profilePhoto: "/images/PetSitter08.jpeg",
         age: 29,
         rating: 5,
         city: "Wallingford",
@@ -118,7 +118,7 @@ module.exports = {
        },
        {
         name: "Martin R Price",
-        profilePhoto: "/images/PetSitter9.jpg",
+        profilePhoto: "/images/PetSitter09.jpeg",
         age: 28,
         rating: 5,
         city: "Miami",
@@ -132,7 +132,7 @@ module.exports = {
        },
        {
         name: "Scott I Holley",
-        profilePhoto: "/images/PetSitter10.jpg",
+        profilePhoto: "/images/PetSitter10.jpeg",
         age: 35,
         rating: 5,
         city: "Miami",

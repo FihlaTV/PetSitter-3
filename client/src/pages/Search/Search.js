@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
-import Sitter from "../../components/Sitter";
 import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask } from 'mdbreact';
 import { Form, Button, Grid } from "semantic-ui-react";
 import carousel01 from "../../components/Header/carousel01.jpg";
@@ -15,48 +14,40 @@ class Search extends Component {
         age: "",
         rating: "",
         response: "",
+        profilePhoto: "",
         city: "",
-        displaySitters: false
+        sitters: []
     };
 
-    displaySitter = () => {
-        this.setState({
-            displaySitters: !this.state.displaySitters
-        })
-    }
+ /*    componentDidMount() {
+        this.loadSitters();
+    } */
 
-    /* submit = () => {
-        this.callApi()
+    submit = () => {
+        this.loadSitters()
         .catch(err => console.log(err));
         console.log(this.state.response);
     }
 
-    callApi = async () => {
-        const response = await fetch('/api/petSitter/all');
+    loadSitters = async (city) => {
+        const response = await fetch('/api/petSitter/search/' + city);
         const body = await response.json();
         console.log(body);
         if (response.status !== 200) throw Error(body.message);
-    
-        return body;
-    }; */
+        this.setState({ sitters: body.petSitter })
+    };
+
+    renderSitters = () => {
+        return this.state.sitters.map((sitter, i) => {
+            return <div key={i}>
+                <p>{sitter.name}</p><br />
+                <p><img src={sitter.profilePhoto} alt="Sitter pic" /></p>
+            </div>
+        })
+    }
 
     render() {
-        let theSitters = null;
-
-        if ( this.state.city === this.state.displaySitters.city ) {
-            theSitters = (
-            <div>
-                 { this.state.theSitters.map((theSitter) => {
-                      return <Sitter
-                                name={theSitter.name}
-                                age={theSitter.age}
-                                rating={theSitter.rating}
-                                key={theSitter.id} />
-                 })}
-            </div>
-            )
-       }
-
+        console.log(this.state.sitters)
         return (
             <div className="search-form">
                 <style>
@@ -122,13 +113,14 @@ class Search extends Component {
                                     type='search'
                                     className="forminputz"
                                 />
-                                <Button fluid size='large' id="searchButton" onClick={this.displaySitter}>
+                                <Button fluid size='large' id="searchButton" onClick={this.loadSitters}>
                                     Search
                             </Button>
                             </Form>
                         </Col>
                     </Row>
-                </Grid>   
+                </Grid>
+                {this.renderSitters()}
             </div>
 
             
