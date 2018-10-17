@@ -42,3 +42,18 @@ body {
     float: right;
     margin-right: -80px;
 }
+
+#sitterDiv {
+    margin-bottom: 100px;
+}
+
+#sitterNameAge {
+    font-family: 'Mali', cursive;
+    font-size: 36px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 4px #cc8f51;
+}
