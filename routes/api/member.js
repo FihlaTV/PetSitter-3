@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const db = require("../../models");
-const petSitterController = require("../../controllers/petSitterController")
 // Require the user 
 const Member = require('../../models/Member');
 const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken');
-const 
+
 // Require the secret sauce
 const keys = require('../../config/keys');
 
@@ -103,29 +102,19 @@ router.get("/:id", (req, res) => {
         .catch(err => res.status(422).json(err))
 })
 
-
-router.put("/addFavorite/:memberId/:petSitterId", (req, res) => {
-    console.log("endpoint")
-    db.PetSitter.findOne({ _id: req.params.petsitterId })
-        .then((sitterId) => {
-            db.Member.updateOne({ "_id": req.params.memberId },{ "$push": { "favorites": sitterId }}, 
-            ((raw) => {
-                    return (raw);
-         }))
-})})
-
-// router.route("/addFavorite/:memberId/:petSitterId")
-//     .put(function (req, res) {
-//         db.PetSitter.findOne({ _id: req.params.petSitterId }).then(function (sitterId) {
-//             db.Member.updateOne(
-//                 { "_id": req.params.memberId },
-//                 { "$push": { "favorites": sitterId } },
-//                 function (err, raw) {
-// if (err) return handleError(err);
-// console.log('The raw response from Mongo was ', raw);
-//                 })
-//         })
-//     })
+// Add member favorites
+router.route("/addFavorite/:memberId/:petSitterId")
+    .put(function (req, res) {
+        db.PetSitter.findOne({ _id: req.params.petSitterId }).then(function (sitterId) {
+            db.Member.updateOne(
+                { "_id": req.params.memberId },
+                { "$push": { "favorites": sitterId } },
+                function (err, raw) {
+if (err) return handleError(err);
+console.log('The raw response from Mongo was ', raw);
+                })
+        })
+    })
 
 //search members favorites    
 router.get("/memberFavorites/:id", (req, res) => {
