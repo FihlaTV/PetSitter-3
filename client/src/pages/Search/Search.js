@@ -141,7 +141,7 @@ class Search extends Component {
                     </Row>
                        
                     <Row>
-                        <Col size="sm-10 md-6">
+                        <Col size="sm-10 md-6" style={{ textAlign: "center" }}>
                             {this.renderSitters()}
                         </Col>
                     </Row>
