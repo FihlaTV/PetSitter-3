@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
-import Sitter from "../../components/Sitter";
 import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask } from 'mdbreact';
-import { Form, Button, Grid } from "semantic-ui-react";
+import { Form, Button, Grid, Image, Rating } from "semantic-ui-react";
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
@@ -15,48 +14,58 @@ class Search extends Component {
         age: "",
         rating: "",
         response: "",
+        profilePhoto: "",
         city: "",
-        displaySitters: false
+        sitters: [], 
+        searchInput: ""
     };
 
-    displaySitter = () => {
-        this.setState({
-            displaySitters: !this.state.displaySitters
-        })
-    }
+ /*    componentDidMount() {
+        this.loadSitters();
+    } */
 
-    /* submit = () => {
-        this.callApi()
+    submit = () => {
+        this.loadSitters()
         .catch(err => console.log(err));
         console.log(this.state.response);
     }
 
-    callApi = async () => {
-        const response = await fetch('/api/petSitter/all');
+    loadSitters = async () => {
+        const response = await fetch('/api/petSitter/search/' + this.stringFormatter(this.state.searchInput));
         const body = await response.json();
         console.log(body);
         if (response.status !== 200) throw Error(body.message);
-    
-        return body;
-    }; */
+        this.setState({ sitters: body.serchedSitters })
+    };
+
+    onChange = (event) => {
+        const { value } = event.target;
+        this.setState({
+            searchInput:value
+        })
+    }
+
+    stringFormatter = (str) => {
+        return str.replace(
+            /\w\S*/g,
+            function(txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }
+        );
+    }
+
+    renderSitters = () => {
+        return this.state.sitters.map((sitter, i) => {
+            return <div key={i} id="sitterDiv">
+                <p><Image src={sitter.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p>
+                <span id="sitterNameAge">{sitter.name}, {sitter.age}</span><br /><br />
+                <Rating maxRating={5} defaultRating={sitter.rating} icon='star' size='massive' disabled /><br /><br />
+            </div>
+        })
+    }
 
     render() {
-        let theSitters = null;
-
-        if ( this.state.city === this.state.displaySitters.city ) {
-            theSitters = (
-            <div>
-                 { this.state.theSitters.map((theSitter) => {
-                      return <Sitter
-                                name={theSitter.name}
-                                age={theSitter.age}
-                                rating={theSitter.rating}
-                                key={theSitter.id} />
-                 })}
-            </div>
-            )
-       }
-
+        console.log(this.state)
         return (
             <div className="search-form">
                 <style>
@@ -121,14 +130,24 @@ class Search extends Component {
                                     placeholder='Search by City'
                                     type='search'
                                     className="forminputz"
+                                    value={this.state.searchInput}
+                                    onChange={this.onChange}
                                 />
-                                <Button fluid size='large' id="searchButton" onClick={this.displaySitter}>
+                                <Button fluid size='large' id="searchButton" onClick={this.loadSitters}>
                                     Search
                             </Button>
                             </Form>
                         </Col>
                     </Row>
-                </Grid>   
+                       
+                    <Row>
+                        <Col size="sm-10 md-6" style={{ textAlign: "center" }}>
+                            {this.renderSitters()}
+                        </Col>
+                    </Row>
+                    
+                </Grid>
+                
             </div>
 
             
