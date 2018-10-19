@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
 import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask } from 'mdbreact';
 import { Grid, Image, Rating, Icon, Button } from "semantic-ui-react";
+import { Card, CardBody } from 'mdbreact';
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
@@ -71,7 +72,7 @@ class SitterProfile extends Component {
 
                     <Row>
                         {/* Left Column */}
-                        <Col size="sm-6 md-4" style={{ textAlign: "center" }}>
+                        <Col size="sm-6 md-5" style={{ textAlign: "center" }}>
 
                             <p><Image src={this.props.location.state.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p><br />
                             <Rating maxRating={5} defaultRating={this.props.location.state.rating} icon='star' size='massive' disabled /><br />
@@ -84,16 +85,18 @@ class SitterProfile extends Component {
                                 </Button.Content>
                             </Button>
                         </Col>
-                        
+
                         {/* Right Column */}
-                        <Col size="sm-6 md-8" style={{ textAlign: "center" }}>
-
-                            <p><Image src={this.props.location.state.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p><br />
-                            <Rating maxRating={5} defaultRating={this.props.location.state.rating} icon='star' size='massive' disabled /><br /><br />
-
+                        <Col size="sm-6 md-7" style={{ textAlign: "center" }}>
+                            <Card className="z-depth-5" id="favoriteCard">
+                                <CardBody id="cardBody">
+                                    <h2 id="sitterSummary">
+                                        "{this.props.location.state.summary}"
+                                    </h2>
+                                </CardBody>
+                            </Card>
                         </Col>
                     </Row>
-
                 </Grid>
             </div>
         )

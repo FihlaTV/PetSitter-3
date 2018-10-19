@@ -34,3 +34,18 @@
     text-align: center;
     text-shadow: 1px 1px 4px #cc8f51;
 }
+
+#favoriteCard {
+    background: #f4e8dc;
+    margin-bottom: 150px;
+    width: 90%;
+    font-family: 'Mali', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 4px #cc8f51;
+    line-height: 200%;
+}
