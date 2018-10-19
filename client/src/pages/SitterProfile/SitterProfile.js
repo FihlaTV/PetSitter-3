@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
 import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask } from 'mdbreact';
 import { Grid, Image, Rating, Icon, Button } from "semantic-ui-react";
-import { Card, CardBody } from 'mdbreact';
+import { Card, CardBody, CardHeader } from 'mdbreact';
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
@@ -72,7 +72,7 @@ class SitterProfile extends Component {
 
                     <Row>
                         {/* Left Column */}
-                        <Col size="sm-6 md-5" style={{ textAlign: "center" }}>
+                        <Col size="sm-12 md-5" style={{ textAlign: "center" }}>
 
                             <p><Image src={this.props.location.state.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p><br />
                             <Rating maxRating={5} defaultRating={this.props.location.state.rating} icon='star' size='massive' disabled /><br />
@@ -87,12 +87,22 @@ class SitterProfile extends Component {
                         </Col>
 
                         {/* Right Column */}
-                        <Col size="sm-6 md-7" style={{ textAlign: "center" }}>
+                        <Col size="sm-12 md-7" style={{ textAlign: "center" }}>
                             <Card className="z-depth-5" id="favoriteCard">
-                                <CardBody id="cardBody">
+                            <CardHeader style={{ background: "#0d2c38", color: "#ffffff"}}>Why You Should Hire Me</CardHeader>
+                                <CardBody>
                                     <h2 id="sitterSummary">
                                         "{this.props.location.state.summary}"
                                     </h2>
+                                </CardBody>
+                            </Card>
+                            <Card className="z-depth-5" id="favoriteCard">
+                                <CardHeader style={{ background: "#0d2c38", color: "#ffffff"}}>More Information</CardHeader>
+                                <CardBody>
+                                    <h2 className="profileSubtitle">City: {this.props.location.state.city}</h2> 
+                                    <h2 className="profileSubtitle">Years of Experience: {this.props.location.state.yearsOfExperience} years</h2> 
+                                    <h2 className="profileSubtitle">Types of Animals: {this.props.location.state.typesOfAnimals}</h2> 
+                                    <h2 className="profileSubtitle">Availability: {this.props.location.state.availability}</h2> 
                                 </CardBody>
                             </Card>
                         </Col>

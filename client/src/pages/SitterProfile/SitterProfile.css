@@ -10,7 +10,7 @@
 }
 
 .sitterprofileDiv {
-    margin-bottom: 700px;
+    margin-bottom: 500px;
 }
 
 #pricetitle {
@@ -37,15 +37,17 @@
 
 #favoriteCard {
     background: #f4e8dc;
-    margin-bottom: 150px;
     width: 90%;
     font-family: 'Mali', cursive;
-    font-size: 28px;
+    font-size: 32px;
     letter-spacing: 1px;
     font-style: italic;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
     text-shadow: 1px 1px 4px #cc8f51;
-    line-height: 200%;
+}
+
+CardHeader {
+    font-family: 'Palanquin Dark', sans-serif;
 }
