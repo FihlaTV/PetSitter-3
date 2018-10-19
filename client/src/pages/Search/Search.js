@@ -43,7 +43,6 @@ class Search extends Component {
             pathname: '/sitterProfile',
             state: sitterData
         })
-
     }
 
     onChange = (event) => {

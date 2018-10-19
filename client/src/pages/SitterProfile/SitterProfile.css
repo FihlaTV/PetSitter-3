@@ -1,0 +1,36 @@
+#profiletitle {
+    font-family: 'Mali', cursive;
+    font-size: 50px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 7px #cc8f51;
+}
+
+.sitterprofileDiv {
+    margin-bottom: 700px;
+}
+
+#pricetitle {
+    font-family: 'Mali', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 4px #cc8f51;
+}
+
+#AddtoFavorites {
+    font-family: 'Mali', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 4px #cc8f51;
+}
