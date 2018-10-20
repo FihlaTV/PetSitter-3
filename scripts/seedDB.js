@@ -83,7 +83,7 @@ module.exports = {
         price: 197,
         summary: "I've had so many pets and taken care of so many over the course of my lifetime.  Can't wait to take care of yours!",
         phone: "954-636-5336",
-        email: "Shane.Botts@gmail.com",
+        email: "Shane.Boyle@gmail.com",
         yearsOfExperience: "10",
         typesOfAnimals: "Ferrets, Cats",
         availability: "Weekends Only"

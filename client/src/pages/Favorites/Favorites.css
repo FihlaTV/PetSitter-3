@@ -38,11 +38,12 @@ h1, h2, h3 {
 }
 
 #h3-responsive {
-    font-family: 'Palanquin Dark', sans-serif;
-    font-size: 80px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 90px;
     opacity: 0.85;
     color: #f4e8dc;
     font-style: italic;
+    font-weight: 800;
     text-shadow: 3px 3px 9px #000000;
     float: right;
     margin-right: -80px;

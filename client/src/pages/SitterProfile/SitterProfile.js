@@ -102,7 +102,7 @@ class SitterProfile extends Component {
                         {/* Right Column */}
                         <Col size="sm-12 md-7" style={{ textAlign: "center" }}>
                             <Card className="z-depth-5" id="favoriteCard">
-                                <CardHeader style={{ background: "#0d2c38", color: "#ffffff" }}>Why You Should Hire Me</CardHeader>
+                                <CardHeader style={{ background: "#0d2c38", color: "#ffffff", fontFamily: 'Raleway'}}>Why You Should Hire Me</CardHeader>
                                 <CardBody>
                                     <h2 id="sitterSummary">
                                         "{this.props.location.state.summary}"
@@ -110,7 +110,7 @@ class SitterProfile extends Component {
                                 </CardBody>
                             </Card>
                             <Card className="z-depth-5" id="favoriteCard">
-                                <CardHeader style={{ background: "#0d2c38", color: "#ffffff" }}>More Information</CardHeader>
+                                <CardHeader style={{ background: "#0d2c38", color: "#ffffff", fontFamily: 'Raleway' }}>More Information</CardHeader>
                                 <CardBody>
                                     <h2 className="profileSubtitle">City: {this.props.location.state.city}</h2>
                                     <h2 className="profileSubtitle">Years of Experience: {this.props.location.state.yearsOfExperience} years</h2>
