@@ -1,0 +1,84 @@
+#profiletitle {
+    font-family: 'Mali', cursive;
+    font-size: 50px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    text-shadow: 2px 2px 7px #cc8f51;
+}
+
+.sitterprofileDiv {
+    margin-bottom: 500px;
+}
+
+#pricetitle {
+    font-family: 'Mali', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 4px #cc8f51;
+}
+
+#AddtoFavorites {
+    font-family: 'Mali', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    font-style: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 4px #cc8f51;
+}
+
+#favoriteCard {
+    background: #f4e8dc;
+    width: 90%;
+    font-family: 'Mali', cursive;
+    font-size: 32px;
+    letter-spacing: 1px;
+    font-style: italic;
+    margin-top: 10px;
+    text-align: left;
+    text-shadow: 1px 1px 4px #cc8f51;
+}
+
+#contactsitterButton {
+    background: #0d2c38;
+    color: #ffffff;
+    font-size: 24px;
+    font-style: bold;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#modalheaderProfile {
+    background: #0d2c38;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#modalButtonProfile {
+    background: #0d2c38;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#contactTitles {
+    color: #0d2c38;
+}
+
+@media only screen and (max-width: 750px) {
+    #favoriteCard {
+        margin-left: 30px;
+    }
+
+    #contactsitterButton {
+        margin-bottom: 100px;
+    }
+
+}

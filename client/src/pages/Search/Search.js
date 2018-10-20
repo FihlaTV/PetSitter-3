@@ -38,6 +38,13 @@ class Search extends Component {
         this.setState({ sitters: body.serchedSitters })
     };
 
+    loadSitterProfile = (sitterData) => {
+        this.props.history.push({
+            pathname: '/sitterProfile',
+            state: sitterData
+        })
+    }
+
     onChange = (event) => {
         const { value } = event.target;
         this.setState({
@@ -57,7 +64,7 @@ class Search extends Component {
     renderSitters = () => {
         return this.state.sitters.map((sitter, i) => {
             return <div key={i} id="sitterDiv">
-                <p><Image src={sitter.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p>
+                <p><Image src={sitter.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular onClick={() => this.loadSitterProfile(sitter)}/></p>
                 <span id="sitterNameAge">{sitter.name}, {sitter.age}</span><br /><br />
                 <Rating maxRating={5} defaultRating={sitter.rating} icon='star' size='massive' disabled /><br /><br />
             </div>
