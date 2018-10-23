@@ -20,13 +20,11 @@ class SitterProfile extends Component {
         };
     };
 
-     parseJwt = (token)  => {
+    parseJwt = (token)  => {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         console.log(JSON.parse(window.atob(base64)));
     };
-
-    // decodedValue = JSON.parse(window.atob(base64));
 
     componentDidMount() {
         const token = localStorage.getItem("jwtToken");
@@ -46,8 +44,8 @@ class SitterProfile extends Component {
         });
     }
 
-    addFavorite = (sitterId,userId) => {
-        console.log(sitterId, userId);
+    addFavorite = (userId, sitterId) => {
+        console.log(userId, sitterId);
         fetch("/api/member/addFavorite/"+userId+"/"+sitterId, {
             method: "PUT",
             body: JSON.stringify({_id: sitterId})
