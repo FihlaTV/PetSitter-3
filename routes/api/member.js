@@ -71,11 +71,14 @@ router.post('/login', (req, res) => {
               .then(isMatch => {
                   if (isMatch) {
                       const payload = { id: user.id, name: user.name, avatar: user.avatar } // created JWT payload
+                      console.log(payload);
                       jwt.sign(
                           payload,
                           keys.secretOrPrivateKey,
                           { expiresIn: 7200 },
                           (err, token) => {
+                             console.log(err);
+                             console.log(token);
                               res.json({
                                   sucess: true,
                                   token: 'Bearer ' + token
@@ -104,7 +107,9 @@ router.route("/:id")
 
   router.route("/addFavorite/:memberId/:petSitterId")
     .put(function(req, res){
+        console.log(req.params.petSitterId, req.params.memberId)
         db.PetSitter.findOne({_id:req.params.petSitterId}).then(function(sitterId){
+            console.log(sitterId);
             // var petSitter =  res.json();
             db.Member.updateOne(
                 { "_id": req.params.memberId},

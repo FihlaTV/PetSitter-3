@@ -40,9 +40,11 @@ class SignIn extends Component {
             })
         }).then(response => {
             if (response.ok) {
-              response.json().then(json => {     
+              response.json().then(json => {   
+                
+                console.log(json)  
+                localStorage.setItem('jwtToken', json.token);
                 this.setRedirect();
-                return json;
               });
             } 
             

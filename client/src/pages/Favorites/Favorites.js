@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
-import { ProfilePhoto } from "../../components/Profile";
 import { Button, Grid, Icon, Rating } from "semantic-ui-react"
 import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask, Container } from 'mdbreact';
 import { Card, CardBody } from 'mdbreact';
@@ -77,7 +76,7 @@ class Favorites extends Component {
                                     <CardBody id="cardBody">
                                         <Row>
                                             <Col size="sm-12 md-3">
-                                                <ProfilePhoto />
+                                                {/* <p><Image src={this.props.location.state.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p><br /> */}
                                             </Col>
                                             <Col size="sm-12 md-3" style={{ textAlign: "center" }}>
                                                 <h2>John Doe, 24</h2>
