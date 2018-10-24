@@ -11,3 +11,7 @@ PetSitter is a Full-stack Web-Based Application demonstrating a pet babysitting 
 * Joseph Evangelista - Controller (routes and API routes)
 * Cristian Custodio - Database and Authentication
 * Natalia Gonzalez - Front-end with React and component-based libraries (Semantic UI and MDB React)
+
+## Screencaps:
+![Demo Authentication](https://s2.gifyu.com/images/demo01.gif)
+![Demo User](https://s2.gifyu.com/images/demo02.gif)

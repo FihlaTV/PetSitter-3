@@ -40,12 +40,6 @@ class Favorites extends Component {
 
     };
 
-/*     toggle = () => {
-        this.setState({
-            modal: !this.state.modal
-        });
-    }; */
-
     loadSitters = async () => {
         const response = await fetch('/api/member/memberFavorites/' + this.state.userId);
         const body = await response.json();
@@ -84,7 +78,7 @@ class Favorites extends Component {
                                             <Button animated id="sitterButton" className="mx-auto d-block" style={{ marginBottom: "100px" }} onClick={() => this.loadSitterProfile(sitter)}>
                                                 <Button.Content visible>Go to {sitter.name}'s Profile</Button.Content>
                                                 <Button.Content hidden>
-                                                    <Icon name='arrow alternate circle right outline' size="large"/>
+                                                    <Icon name='arrow alternate circle right outline' size="large" />
                                                 </Button.Content>
                                             </Button>
                                         </Col>
@@ -158,18 +152,6 @@ class Favorites extends Component {
                         </Col>
                     </Row>
                     {this.renderSitters()}
-{/*                     <Modal isOpen={this.state.modal} toggle={this.toggle} className="text-white">
-                        <ModalHeader toggle={this.toggle} id="modalheaderProfile">Contact Information for Test</ModalHeader>
-                        <ModalBody>
-                            <h1 id="contactTitles"><Fa size="1x" icon="envelope" className="ml-1" /> Email: {sitter.email}</h1>
-                            <h1><Badge color="warning" pill>Test</Badge></h1>
-                            <h1 id="contactTitles"><Fa size="1x" icon="mobile-phone" className="ml-1" /> Phone Number: {sitter.phone}</h1>
-                            <h1><Badge color="warning" pill>Test</Badge></h1>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button id="modalButtonProfile" onClick={this.toggle}>Close</Button>{' '}
-                        </ModalFooter>
-                    </Modal> */}
                 </Grid>
             </div>
         )
