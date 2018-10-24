@@ -123,9 +123,13 @@ router.route("/:id")
     router.route("/memberFavorites/:id")
         .get(function (req, res){
             db.Member.findOne({_id:req.params.id}).then(function(memberFavorites){
-                res.json(memberFavorites.favorites)
+                console.log("favorites",memberFavorites.favorites)
+                db.PetSitter.find({_id: {$in: memberFavorites.favorites}}).then(function(favoritesProfile){
+                    console.log(favoritesProfile)
+                    res.json({favoritesProfile: favoritesProfile})
+                })
             })
-        })
+        }) 
 
 
   module.exports = router;

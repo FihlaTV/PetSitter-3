@@ -1,14 +1,99 @@
 import React, { Component } from "react";
 import { Col, Row } from "../../components/Grid";
-import { Button, Grid, Icon, Rating } from "semantic-ui-react"
+import { Button, Grid, Icon, Rating, Image } from "semantic-ui-react"
 import { Carousel, CarouselInner, CarouselItem, CarouselCaption, View, Mask, Container } from 'mdbreact';
 import { Card, CardBody } from 'mdbreact';
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
+import jwt_decode from 'jwt-decode';
 import "./Favorites.css"
 
 class Favorites extends Component {
+
+    state = {
+        userId: "5bcfa7d189d2b336c4cf03c4",
+        modal: false,
+        sitters: []
+    };
+
+    parseJwt = (token) => {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        console.log(JSON.parse(window.atob(base64)));
+    };
+
+    componentDidMount() {
+        const token = localStorage.getItem("jwtToken");
+        var base64Url = token.split(' ')[1];
+        var decoded = jwt_decode(base64Url)
+        console.log(decoded);
+        this.setState({
+            userId: decoded.id
+        }, () => {
+            console.log(this.state);
+            this.loadSitters();
+        })
+
+    };
+
+/*     toggle = () => {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }; */
+
+    loadSitters = async () => {
+        const response = await fetch('/api/member/memberFavorites/' + this.state.userId);
+        const body = await response.json();
+        console.log(body);
+        if (response.status !== 200) throw Error(body.message);
+        this.setState({ sitters: body.favoritesProfile })
+    };
+
+    loadSitterProfile = (sitterData) => {
+        this.props.history.push({
+            pathname: '/sitterProfile',
+            state: sitterData
+        })
+    };
+
+    renderSitters = () => {
+        return this.state.sitters.map((sitter, i) => {
+            return <div key={i} id="sitterDiv">
+                <Container>
+                    <Row>
+                        <Col size="sm-12 md-12">
+                            <Card className="w-100 z-depth-5" id="favoriteCard">
+                                <CardBody id="cardBody">
+                                    <Row>
+                                        <Col size="sm-12 md-3">
+                                            <p><Image src={sitter.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p><br />
+                                        </Col>
+                                        <Col size="sm-12 md-3" style={{ textAlign: "center" }}>
+                                            <h2>{sitter.name}, {sitter.age}</h2>
+                                            <Rating maxRating={5} defaultRating={sitter.rating} icon='star' size='massive' disabled />
+                                        </Col>
+                                        <Col size="sm-12 md-3">
+                                            <h2>$29/night</h2>
+                                        </Col>
+                                        <Col size="sm-12 md-3">
+                                            <Button animated id="contactsitterButton" className="mx-auto d-block" style={{ marginBottom: "100px" }} onClick={() => this.loadSitterProfile(sitter)}>
+                                                <Button.Content visible>Go to {sitter.name}'s Profile</Button.Content>
+                                                <Button.Content hidden>
+                                                    <Icon name='arrow alternate circle right outline' size="large"/>
+                                                </Button.Content>
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        })
+    };
 
     render() {
         return (
@@ -69,37 +154,19 @@ class Favorites extends Component {
                             <h1 id="favoritestitle">Favorites</h1>
                         </Col>
                     </Row>
-                    <Container>
-                        <Row>
-                            <Col size="sm-12 md-12">
-                                <Card className="w-100 z-depth-5" id="favoriteCard">
-                                    <CardBody id="cardBody">
-                                        <Row>
-                                            <Col size="sm-12 md-3">
-                                                {/* <p><Image src={this.props.location.state.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p><br /> */}
-                                            </Col>
-                                            <Col size="sm-12 md-3" style={{ textAlign: "center" }}>
-                                                <h2>John Doe, 24</h2>
-                                                <br />
-                                                <Rating maxRating={5} defaultRating={4} icon='star' size='massive' disabled />
-                                            </Col>
-                                            <Col size="sm-12 md-3">
-                                                <h2>$29/night</h2>
-                                            </Col>
-                                            <Col size="sm-12 md-3">
-                                                <Button animated id="contactsitterButton" className="mx-auto d-block">
-                                                    <Button.Content visible>Contact Pet Sitter</Button.Content>
-                                                    <Button.Content hidden>
-                                                        <Icon name='mail' />
-                                                    </Button.Content>
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                        </Row>
-                    </Container>
+                    {this.renderSitters()}
+{/*                     <Modal isOpen={this.state.modal} toggle={this.toggle} className="text-white">
+                        <ModalHeader toggle={this.toggle} id="modalheaderProfile">Contact Information for Test</ModalHeader>
+                        <ModalBody>
+                            <h1 id="contactTitles"><Fa size="1x" icon="envelope" className="ml-1" /> Email: {sitter.email}</h1>
+                            <h1><Badge color="warning" pill>Test</Badge></h1>
+                            <h1 id="contactTitles"><Fa size="1x" icon="mobile-phone" className="ml-1" /> Phone Number: {sitter.phone}</h1>
+                            <h1><Badge color="warning" pill>Test</Badge></h1>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button id="modalButtonProfile" onClick={this.toggle}>Close</Button>{' '}
+                        </ModalFooter>
+                    </Modal> */}
                 </Grid>
             </div>
         )

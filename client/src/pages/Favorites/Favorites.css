@@ -53,3 +53,19 @@ h1, h2, h3 {
 #cardBody {
     padding: 50px;
 }
+
+#modalheaderProfile {
+    background: #0d2c38;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#modalButtonProfile {
+    background: #0d2c38;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#contactTitles {
+    color: #0d2c38;
+}
