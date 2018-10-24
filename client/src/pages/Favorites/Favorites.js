@@ -61,7 +61,7 @@ class Favorites extends Component {
                 <Container>
                     <Row>
                         <Col size="sm-12 md-12">
-                            <Card className="w-100 z-depth-5" id="favoriteCard">
+                            <Card className="w-100 z-depth-5" id="favoriteCard3">
                                 <CardBody id="cardBody">
                                     <Row>
                                         <Col size="sm-12 md-3">
