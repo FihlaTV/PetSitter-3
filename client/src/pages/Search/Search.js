@@ -5,6 +5,7 @@ import { Form, Button, Grid, Image, Rating } from "semantic-ui-react";
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
+import jwt_decode from 'jwt-decode';
 import "./Search.css";
 
 class Search extends Component {
@@ -20,15 +21,23 @@ class Search extends Component {
         searchInput: ""
     };
 
- /*    componentDidMount() {
-        this.loadSitters();
-    } */
+    parseJwt = (token)  => {
+        var base64Url = token.split(' ')[1];
+        var decoded = jwt_decode(base64Url)
+        console.log(decoded);
+    };
+
+    componentDidMount() {
+        const token = localStorage.getItem("jwtToken");
+        this.parseJwt(token);
+        console.log(token);
+    };
 
     submit = () => {
         this.loadSitters()
         .catch(err => console.log(err));
         console.log(this.state.response);
-    }
+    };
 
     loadSitters = async () => {
         const response = await fetch('/api/petSitter/search/' + this.stringFormatter(this.state.searchInput));
@@ -43,14 +52,14 @@ class Search extends Component {
             pathname: '/sitterProfile',
             state: sitterData
         })
-    }
+    };
 
     onChange = (event) => {
         const { value } = event.target;
         this.setState({
             searchInput:value
         })
-    }
+    };
 
     stringFormatter = (str) => {
         return str.replace(
@@ -59,7 +68,7 @@ class Search extends Component {
                 return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
             }
         );
-    }
+    };
 
     renderSitters = () => {
         return this.state.sitters.map((sitter, i) => {
@@ -69,7 +78,7 @@ class Search extends Component {
                 <Rating maxRating={5} defaultRating={sitter.rating} icon='star' size='massive' disabled /><br /><br />
             </div>
         })
-    }
+    };
 
     render() {
         console.log(this.state)
@@ -151,13 +160,9 @@ class Search extends Component {
                         <Col size="sm-10 md-6" style={{ textAlign: "center" }}>
                             {this.renderSitters()}
                         </Col>
-                    </Row>
-                    
+                    </Row> 
                 </Grid>
-                
-            </div>
-
-            
+            </div> 
         )
     }
 }

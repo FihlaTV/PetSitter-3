@@ -18,23 +18,32 @@ body {
     box-shadow: 0 0px 0px #cc8f51, 0 1px 2px #cc8f51;
 }
 
-#contactsitterButton {
+#sitterButton {
     padding: 20px;
-    font-size: 18px;
+    font-size: 24px;
     font-style: bold;
     margin: 0 auto;
+    margin-top: 30px;
+    background: #0d2c38;
+    color: #ffffff;
 }
 
-#favoriteCard {
+#favoriteCard3 {
     background: #f4e8dc;
-    margin-bottom: 150px;
+    margin-bottom: 50px;
     
 }
 
 h1, h2, h3 {
     text-align: center;
-    font-family: 'Mali', cursive;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 36px;
     padding: 20px;
+    letter-spacing: 1px;
+}
+
+#info {
+    font-size: 45px;
 }
 
 #h3-responsive {
@@ -43,7 +52,7 @@ h1, h2, h3 {
     opacity: 0.85;
     color: #f4e8dc;
     font-style: italic;
-    font-weight: 800;
+    font-weight: 900;
     text-shadow: 3px 3px 9px #000000;
     float: right;
     margin-right: -80px;
@@ -52,4 +61,13 @@ h1, h2, h3 {
 
 #cardBody {
     padding: 50px;
+}
+
+@media only screen and (max-width: 750px) {
+    #favoriteCard3 {
+        margin-left: -5px;
+        margin-bottom: 0px;
+
+    }
+
 }

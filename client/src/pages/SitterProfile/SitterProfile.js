@@ -6,6 +6,7 @@ import { Card, CardBody, CardHeader, Modal, ModalHeader, ModalBody, Fa, ModalFoo
 import carousel01 from "../../components/Header/carousel01.jpg";
 import carousel02 from "../../components/Header/carousel02.jpg";
 import carousel03 from "../../components/Header/carousel03.jpg";
+import jwt_decode from 'jwt-decode';
 import "./SitterProfile.css";
 
 class SitterProfile extends Component {
@@ -13,13 +14,44 @@ class SitterProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modal: false
+            modal: false,
+            sitterId: this.props.location.state._id,
+            userId: "5bc20da7a239a81071fbb325"
         };
-    }
+    };
+
+    parseJwt = (token)  => {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        console.log(JSON.parse(window.atob(base64)));
+    };
+
+    componentDidMount() {
+        const token = localStorage.getItem("jwtToken");
+        var base64Url = token.split(' ')[1];
+        var decoded = jwt_decode(base64Url)
+        console.log(decoded);
+        this.setState({
+            userId: decoded.id
+        }, () => {
+            console.log(this.state)
+        })
+    };
 
     toggle = () => {
         this.setState({
             modal: !this.state.modal
+        });
+    }
+
+    addFavorite = (userId, sitterId) => {
+        console.log(userId, sitterId);
+        fetch("/api/member/addFavorite/"+userId+"/"+sitterId, {
+            method: "PUT",
+            body: JSON.stringify({_id: sitterId})
+        })
+        .then(response => {
+            console.log(response)
         });
     }
 
@@ -90,7 +122,7 @@ class SitterProfile extends Component {
                             <p><Image src={this.props.location.state.profilePhoto} alt="profile pic" size="medium" className="img-fluid hoverable mx-auto d-block" circular /></p><br />
                             <Rating maxRating={5} defaultRating={this.props.location.state.rating} icon='star' size='massive' disabled /><br />
                             <h2 id="pricetitle">Price: ${this.props.location.state.price}/night</h2>
-                            <span id="AddtoFavorites"><Icon circular inverted name='heart' size="small" color='red' />Add to Favorites</span><br /><br /><br />
+                            <span id="AddtoFavorites" ><Icon circular inverted name='heart' size="small" color='red' onClick={()=>this.addFavorite(this.state.userId,this.state.sitterId)}/>Add to Favorites</span><br /><br /><br />
                             <Button animated id="contactsitterButton" className="mx-auto d-block" style={{ marginBottom: "100px" }} onClick={this.toggle}>
                                 <Button.Content visible>Contact {this.props.location.state.name}</Button.Content>
                                 <Button.Content hidden>
@@ -101,7 +133,7 @@ class SitterProfile extends Component {
 
                         {/* Right Column */}
                         <Col size="sm-12 md-7" style={{ textAlign: "center" }}>
-                            <Card className="z-depth-5" id="favoriteCard">
+                            <Card className="z-depth-5" id="favoriteCard2">
                                 <CardHeader style={{ background: "#0d2c38", color: "#ffffff", fontFamily: 'Raleway'}}>Why You Should Hire Me</CardHeader>
                                 <CardBody>
                                     <h2 id="sitterSummary">
@@ -109,7 +141,7 @@ class SitterProfile extends Component {
                                     </h2>
                                 </CardBody>
                             </Card>
-                            <Card className="z-depth-5" id="favoriteCard">
+                            <Card className="z-depth-5" id="favoriteCard2">
                                 <CardHeader style={{ background: "#0d2c38", color: "#ffffff", fontFamily: 'Raleway' }}>More Information</CardHeader>
                                 <CardBody>
                                     <h2 className="profileSubtitle">City: {this.props.location.state.city}</h2>

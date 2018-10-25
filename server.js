@@ -22,7 +22,7 @@ app.use(routes);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/petsitter", { useNewUrlParser: true });
 
 //Populate database with seed file
-scripts.seedPetSitters();
+// scripts.seedPetSitters();
 
 //Start the API Server
 app.listen(port, () => console.log(`Listening on port ${port}`));
