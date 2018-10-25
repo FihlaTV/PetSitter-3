@@ -4,7 +4,7 @@ PetSitter is a Full-stack Web-Based Application made for users to be able to sea
 PetSitter utilizes the MERN (MongoDB/Express/React/NodeJS technologies) stack architecture and follows the Model-View-Controller (MVC) design pattern.
 
 ## Demo
-[Click for demo deployed to Heroku here](https://agile-basin-50539.herokuapp.com/)
+[Click for demo deployed to Heroku here](https://desolate-beyond-82946.herokuapp.com/)
 
 ## Technologies:
 * Mongo DB
